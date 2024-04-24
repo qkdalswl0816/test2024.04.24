@@ -1,0 +1,116 @@
+.department {
+	.sub_visual {
+		background-image: url(../img/brand4.jpg);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+	}
+	.inner {
+		.division {
+			width: 100%;
+			width: none;
+			min-height: 600px;
+			// 높이값을 그냥  주지 않고 min으로 주면
+			background: url(../img/bgDIvision.jpg) no-repeat center/contain;
+			// 모바일일때 안보이게하는것
+			.div_tree {
+				// 고정값을 주기 않고 -99999로 날려 버리기
+				position: absolute;
+				top: -99999px;
+				opacity: 0;
+				transition: all 1s;
+				li {
+					span {
+						display: block;
+						width: 40%;
+						height: 50px;
+						background-color: #111;
+						font: bold 13px/50px '맑은고딕';
+						color: #fff;
+						text-align: center;
+						border-radius: 25px;
+						margin-bottom: 20px;
+						position: relative;
+						&::after {
+							content: '';
+							display: block;
+							width: 1px;
+							height: calc((50px + 20px) * 17 - (50px / 2));
+							background: #aaa;
+							position: absolute;
+							top: 50px;
+							left: 50px;
+						}
+					}
+					ul li {
+						span {
+							background-color: #666;
+							transform: translateX(70px);
+							&::before {
+								content: '';
+								display: block;
+								// 가상선택자 쓸때 무적권 블록!
+								width: 20px;
+								height: 1px;
+								background-color: #aaa;
+								position: absolute;
+								top: 50%;
+								left: -20px;
+							}
+						}
+						&:nth-of-type(1) span::after {
+							display: none;
+						}
+						&:nth-of-type(2) span::after {
+							display: none;
+						}
+						&:nth-of-type(3) span::after {
+							height: calc((50px + 20px) * 2 - (50px / 2));
+						}
+						&:nth-of-type(4) span::after {
+							height: calc((50px + 20px) * 3 - (50px / 2));
+						}
+						&:nth-of-type(5) span::after {
+							height: calc((50px + 20px) * 2 - (50px / 2));
+						}
+						&:nth-of-type(6) span::after {
+							height: calc((50px + 20px) * 3 - (50px / 2));
+						}
+						&:nth-of-type(7) span::after {
+							height: calc((50px + 20px) * 2 - (50px / 2));
+						}
+						ul li {
+							span {
+								background: #999;
+								transform: translateX(140px);
+								&::after {
+									display: none;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// 다시 보이게 하기
+@media screen and (max-width: 700px) {
+	// max-width: 모바일일때 가로가 700px이란는 뜻 (F12로 확인하기)
+	.department {
+		.inner {
+			.division {
+				// 위에서 한줄로 줬으면 똑같이 한줄로 주기
+				background: none;
+				// height: auto;
+				.div_tree {
+					// 위에 position: absolute 줬기떄문에 relative;을 줘서 다시 잡아주기
+					position: relative;
+					opacity: 1;
+					top: 0;
+				}
+			}
+		}
+	}
+}
